@@ -6,12 +6,11 @@
 */
 void is_full(const binary_tree_t *tree, int *p)
 {
-	if (*p == 0)
-		return;
-	if (tree)
+	if (tree && p)
 	{
-		if (tree->left && tree->right || !tree->left && !tree->right)
-			*p = 0
+		if (!((tree->left && tree->right) ||
+				(!tree->left && !tree->right)))
+			*p = 0;
 		is_full(tree->left, p);
 		is_full(tree->right, p);
 	}
@@ -24,6 +23,13 @@ void is_full(const binary_tree_t *tree, int *p)
 */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
+	int sign = 1;
 
-	is_full()
+	if (tree)
+	{
+		is_full(tree, &sign);
+		if (sign)
+			return (1);
+	}
+	return (0);
 }
